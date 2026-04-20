@@ -90,7 +90,7 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
               {topic.category}
             </span>
 
-            <TranslatedTitle text={topic.title} />
+            <TranslatedTitle text={topic.title} topicId={topic.id} />
 
             <div className="flex items-center gap-3 text-xs text-muted-light mb-6">
               <div className="flex items-center gap-2">
@@ -114,7 +114,7 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
             </div>
             <div className="border-b border-border mb-8" />
 
-            <ArticleBody body={topic.body} />
+            <ArticleBody body={topic.body} topicId={topic.id} />
 
             {/* Tweet card */}
             {tweet && (

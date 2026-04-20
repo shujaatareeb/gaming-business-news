@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, useEffect, useRef } from "react";
+import { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { type LangCode, LANGUAGES, t } from "@/lib/i18n";
 
 interface LangContextType {
@@ -8,8 +8,6 @@ interface LangContextType {
   setLang: (lang: LangCode) => void;
   t: (key: Parameters<typeof t>[1]) => string;
   isRTL: boolean;
-  translateContent: (texts: string[]) => Promise<string[]>;
-  contentCache: Map<string, string>;
 }
 
 const LangContext = createContext<LangContextType>({
@@ -17,28 +15,28 @@ const LangContext = createContext<LangContextType>({
   setLang: () => {},
   t: (key) => t("en", key),
   isRTL: false,
-  translateContent: async (texts) => texts,
-  contentCache: new Map(),
 });
 
 export function useLang() {
   return useContext(LangContext);
 }
 
+const SUPPORTED_STATIC = new Set(["en", "es", "pt", "ko"]);
+
 function detectLocale(): LangCode {
   if (typeof navigator === "undefined") return "en";
-  const browserLang = navigator.language?.toLowerCase() || "";
-  const code = browserLang.split("-")[0];
-  const supported = LANGUAGES.find((l) => l.code === code);
-  return supported ? supported.code : "en";
+  const code = navigator.language?.toLowerCase().split("-")[0] || "";
+  // Only auto-detect languages we have static translations for
+  if (SUPPORTED_STATIC.has(code)) {
+    const match = LANGUAGES.find((l) => l.code === code);
+    if (match) return match.code;
+  }
+  return "en";
 }
 
 export function LangProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLangState] = useState<LangCode>("en");
-  const contentCacheRef = useRef(new Map<string, string>());
-  const pendingRef = useRef<AbortController | null>(null);
 
-  // Auto-detect locale on mount
   useEffect(() => {
     const detected = detectLocale();
     if (detected !== "en") {
@@ -50,8 +48,6 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
   const setLang = useCallback((code: LangCode) => {
     setLangState(code);
     document.documentElement.dir = code === "ar" ? "rtl" : "ltr";
-    // Clear content cache on language change
-    contentCacheRef.current = new Map();
   }, []);
 
   const translate = useCallback(
@@ -59,74 +55,8 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
     [lang]
   );
 
-  const translateContent = useCallback(
-    async (texts: string[]): Promise<string[]> => {
-      if (lang === "en") return texts;
-
-      // Check what's already cached
-      const results: string[] = new Array(texts.length);
-      const uncached: { index: number; text: string }[] = [];
-
-      for (let i = 0; i < texts.length; i++) {
-        const key = `${lang}:${texts[i]}`;
-        if (contentCacheRef.current.has(key)) {
-          results[i] = contentCacheRef.current.get(key)!;
-        } else {
-          results[i] = texts[i]; // fallback to original
-          uncached.push({ index: i, text: texts[i] });
-        }
-      }
-
-      if (uncached.length === 0) return results;
-
-      // Cancel previous request
-      if (pendingRef.current) pendingRef.current.abort();
-      const controller = new AbortController();
-      pendingRef.current = controller;
-
-      try {
-        const res = await fetch("/api/translate", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            texts: uncached.map((u) => u.text),
-            targetLang: lang,
-          }),
-          signal: controller.signal,
-        });
-
-        if (!res.ok) return results;
-        const data = await res.json();
-
-        if (data.translations) {
-          for (let i = 0; i < uncached.length; i++) {
-            if (data.translations[i]) {
-              results[uncached[i].index] = data.translations[i];
-              const key = `${lang}:${uncached[i].text}`;
-              contentCacheRef.current.set(key, data.translations[i]);
-            }
-          }
-        }
-
-        return results;
-      } catch {
-        return results;
-      }
-    },
-    [lang]
-  );
-
   return (
-    <LangContext.Provider
-      value={{
-        lang,
-        setLang,
-        t: translate,
-        isRTL: lang === "ar",
-        translateContent,
-        contentCache: contentCacheRef.current,
-      }}
-    >
+    <LangContext.Provider value={{ lang, setLang, t: translate, isRTL: lang === "ar" }}>
       {children}
     </LangContext.Provider>
   );
@@ -136,6 +66,11 @@ export function LanguageSwitcher() {
   const { lang, setLang } = useLang();
   const [open, setOpen] = useState(false);
   const current = LANGUAGES.find((l) => l.code === lang)!;
+
+  // Only show languages we have content translations for
+  const availableLanguages = LANGUAGES.filter(
+    (l) => SUPPORTED_STATIC.has(l.code) || ["fr", "de", "ja", "zh", "ar"].includes(l.code)
+  );
 
   return (
     <div className="relative">
@@ -154,7 +89,7 @@ export function LanguageSwitcher() {
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
           <div className="absolute right-0 top-full mt-1 bg-surface border border-border rounded-lg shadow-lg z-50 min-w-[160px] py-1 animate-fade-in">
-            {LANGUAGES.map((l) => (
+            {availableLanguages.map((l) => (
               <button
                 key={l.code}
                 onClick={() => { setLang(l.code); setOpen(false); }}
@@ -166,6 +101,9 @@ export function LanguageSwitcher() {
               >
                 <span>{l.flag}</span>
                 <span>{l.label}</span>
+                {SUPPORTED_STATIC.has(l.code) && l.code !== "en" && (
+                  <span className="ml-auto text-[9px] text-muted-light uppercase tracking-wider">Full</span>
+                )}
               </button>
             ))}
           </div>

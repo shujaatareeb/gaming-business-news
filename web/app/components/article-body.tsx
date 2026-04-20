@@ -1,48 +1,29 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useLang } from "./lang-provider";
+import { getTranslation } from "@/lib/translations";
 
-export function TranslatedTitle({ text }: { text: string }) {
-  const { lang, translateContent } = useLang();
-  const [translated, setTranslated] = useState(text);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (lang === "en") { setTranslated(text); return; }
-    let cancelled = false;
-    setLoading(true);
-    translateContent([text]).then((r) => {
-      if (!cancelled) { setTranslated(r[0] || text); setLoading(false); }
-    });
-    return () => { cancelled = true; };
-  }, [lang, text, translateContent]);
+export function TranslatedTitle({ text, topicId }: { text: string; topicId: string }) {
+  const { lang } = useLang();
+  const idx = parseInt(topicId) - 1;
+  const tr = lang !== "en" ? getTranslation(lang, idx) : null;
 
   return (
-    <h1 className={`font-editorial text-3xl sm:text-4xl font-bold leading-tight mt-2 mb-5 transition-opacity ${loading ? "opacity-60" : ""}`}>
-      {translated}
+    <h1 className="font-editorial text-3xl sm:text-4xl font-bold leading-tight mt-2 mb-5">
+      {tr?.title || text}
     </h1>
   );
 }
 
-export function ArticleBody({ body }: { body: string }) {
-  const { lang, translateContent } = useLang();
-  const [paragraphs, setParagraphs] = useState(body.split("\n\n"));
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const original = body.split("\n\n");
-    if (lang === "en") { setParagraphs(original); return; }
-    let cancelled = false;
-    setLoading(true);
-    translateContent(original).then((results) => {
-      if (!cancelled) { setParagraphs(results); setLoading(false); }
-    });
-    return () => { cancelled = true; };
-  }, [lang, body, translateContent]);
+export function ArticleBody({ body, topicId }: { body: string; topicId: string }) {
+  const { lang } = useLang();
+  const idx = parseInt(topicId) - 1;
+  const tr = lang !== "en" ? getTranslation(lang, idx) : null;
+  const displayBody = tr?.body || body;
+  const paragraphs = displayBody.split("\n\n");
 
   return (
-    <div className={`prose max-w-none transition-opacity ${loading ? "opacity-60" : ""}`}>
+    <div className="prose max-w-none">
       {paragraphs.map((p, i) => (
         <p
           key={i}
