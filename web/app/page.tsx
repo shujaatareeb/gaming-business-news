@@ -5,6 +5,7 @@ import { buildTweetMap, topicReadTime } from "@/lib/utils";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 import { NewsletterBlock } from "./components/newsletter";
+import { TText } from "./components/translated-topic";
 
 const tweetMap = buildTweetMap(tweets);
 const categories = Array.from(new Set(topics.map((t) => t.category)));
@@ -54,9 +55,9 @@ export default function Home() {
             )}
             <span className="kicker">{main.category}</span>
             <h1 className="hl hl-xxl cursor-pointer hover:text-accent transition-colors" style={{ margin: "10px 0 12px" }}>
-              <Link href={`/story/${main.id}`}>{main.title}</Link>
+              <Link href={`/story/${main.id}`}><TText topicId={main.id} field="title" fallback={main.title} /></Link>
             </h1>
-            <p className="dek">{main.summary}</p>
+            <p className="dek"><TText topicId={main.id} field="summary" fallback={main.summary} /></p>
             <div className="byline mt-3.5">
               By <strong>GamePulse Editorial</strong> · <span className="font-bold tracking-[0.12em]">{new Date(main.published).toLocaleDateString("en-US", { month: "short", day: "numeric" }).toUpperCase()}</span> · {topicReadTime(main)}
             </div>
@@ -68,7 +69,7 @@ export default function Home() {
               <article key={s.id} className={`${i < subs.length - 1 ? "pb-4 border-b border-border" : ""}`}>
                 <span className="kicker">{s.category}</span>
                 <h3 className="font-editorial font-bold text-[17px] leading-[1.2] mt-1.5 mb-1 hover:text-accent transition-colors">
-                  <Link href={`/story/${s.id}`}>{s.title}</Link>
+                  <Link href={`/story/${s.id}`}><TText topicId={s.id} field="title" fallback={s.title} /></Link>
                 </h3>
                 <div className="byline" style={{ fontSize: 10 }}>{topicReadTime(s)}</div>
               </article>
@@ -127,9 +128,9 @@ export default function Home() {
               )}
               <span className="kicker mb-2.5">{s.category}</span>
               <h3 className="font-editorial font-bold text-[19px] leading-[1.18] text-foreground mb-2 tracking-tight hover:text-accent transition-colors">
-                <Link href={`/story/${s.id}`}>{s.title}</Link>
+                <Link href={`/story/${s.id}`}><TText topicId={s.id} field="title" fallback={s.title} /></Link>
               </h3>
-              <p className="text-[13px] leading-[1.45] line-clamp-3 m-0 mb-3" style={{ color: "var(--color-ink-2)" }}>{s.summary}</p>
+              <p className="text-[13px] leading-[1.45] line-clamp-3 m-0 mb-3" style={{ color: "var(--color-ink-2)" }}><TText topicId={s.id} field="summary" fallback={s.summary} /></p>
               <div className="mt-auto flex justify-between" style={{ fontFamily: "var(--font-sans)", fontSize: "10.5px", letterSpacing: "0.08em", color: "var(--color-muted)", textTransform: "uppercase" }}>
                 <span>{topicReadTime(s)}</span>
               </div>
@@ -163,9 +164,9 @@ export default function Home() {
                   )}
                   <span className="kicker">{feat.category}</span>
                   <h3 className="hl hl-lg my-2 hover:text-accent transition-colors">
-                    <Link href={`/story/${feat.id}`}>{feat.title}</Link>
+                    <Link href={`/story/${feat.id}`}><TText topicId={feat.id} field="title" fallback={feat.title} /></Link>
                   </h3>
-                  <p className="dek text-[13.5px]">{feat.summary}</p>
+                  <p className="dek text-[13.5px]"><TText topicId={feat.id} field="summary" fallback={feat.summary} /></p>
                   <div className="byline mt-2">By <strong>GamePulse Editorial</strong> · {topicReadTime(feat)}</div>
                 </article>
 
@@ -178,7 +179,7 @@ export default function Home() {
                           {new Date(s.published).toLocaleDateString("en-US", { month: "short", day: "numeric" }).toUpperCase()}
                         </span>
                         <h3 className="font-editorial font-bold text-base leading-[1.22] my-1 transition-colors">
-                          <Link href={`/story/${s.id}`}>{s.title}</Link>
+                          <Link href={`/story/${s.id}`}><TText topicId={s.id} field="title" fallback={s.title} /></Link>
                         </h3>
                         <div className="flex justify-between" style={{ fontFamily: "var(--font-sans)", fontSize: 10, color: "var(--color-muted)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
                           <span>{topicReadTime(s)}</span>
@@ -215,7 +216,7 @@ export default function Home() {
                   </span>
                   <div>
                     <h4 className="font-editorial font-semibold text-sm leading-[1.25] m-0 transition-colors">
-                      <Link href={`/story/${s.id}`}>{s.title}</Link>
+                      <Link href={`/story/${s.id}`}><TText topicId={s.id} field="title" fallback={s.title} /></Link>
                     </h4>
                     <div className="mt-1" style={{ fontFamily: "var(--font-sans)", fontSize: 10, color: "var(--color-muted)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
                       {s.category} · {topicReadTime(s)}
