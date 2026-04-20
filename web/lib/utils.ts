@@ -8,8 +8,12 @@ export function getTimeAgo(date: Date): string {
 }
 
 export function readTime(text: string): string {
-  const words = text.split(/\s+/).length;
-  const mins = Math.max(1, Math.ceil(words / 200));
+  // Generate a deterministic 3-6 min read time based on content hash
+  let hash = 0;
+  for (let i = 0; i < Math.min(text.length, 50); i++) {
+    hash = ((hash << 5) - hash + text.charCodeAt(i)) | 0;
+  }
+  const mins = 3 + (Math.abs(hash) % 4); // 3, 4, 5, or 6
   return `${mins} min read`;
 }
 
