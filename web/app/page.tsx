@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { topics, tweets } from "@/lib/mock-data";
 import { categoryColors } from "@/lib/constants";
-import { buildTweetMap, readTime } from "@/lib/utils";
+import { buildTweetMap, topicReadTime } from "@/lib/utils";
 import { Newsletter } from "./components/newsletter";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
@@ -55,7 +55,7 @@ export default function Home() {
                 {featured[0].summary}
               </p>
               <div className="text-[11px] text-muted-light">
-                {readTime(featured[0].body || featured[0].summary)}
+                {topicReadTime(featured[0])}
               </div>
             </article>
 
@@ -75,7 +75,7 @@ export default function Home() {
                     </Link>
                   </h3>
                   <div className="text-[11px] text-muted-light">
-                    {readTime(topic.body || topic.summary)}
+                    {topicReadTime(topic)}
                   </div>
                 </article>
               ))}
@@ -111,7 +111,7 @@ export default function Home() {
                         {topic.summary}
                       </p>
                       <div className="text-[11px] text-muted-light">
-                        {readTime(topic.body || topic.summary)}
+                        {topicReadTime(topic)}
                       </div>
                     </div>
                     <Link href={`/story/${topic.id}`} className="hidden sm:block relative w-[180px] h-[120px] bg-surface-alt shrink-0 overflow-hidden">
@@ -154,7 +154,7 @@ export default function Home() {
                         </Link>
                       </h3>
                       <p className="text-sm text-muted line-clamp-2 mb-2">{lead.summary}</p>
-                      <div className="text-[11px] text-muted-light">{readTime(lead.body || lead.summary)}</div>
+                      <div className="text-[11px] text-muted-light">{topicReadTime(lead)}</div>
                     </article>
 
                     {/* Divider */}
@@ -170,7 +170,7 @@ export default function Home() {
                             </Link>
                           </h3>
                           <div className="text-[11px] text-muted-light">
-                            {readTime(topic.body || topic.summary)}
+                            {topicReadTime(topic)}
                           </div>
                         </article>
                       ))}
@@ -208,7 +208,7 @@ export default function Home() {
                               {topic.title}
                             </Link>
                           </h3>
-                          <span className="text-[11px] text-muted-light">{readTime(topic.body || topic.summary)}</span>
+                          <span className="text-[11px] text-muted-light">{topicReadTime(topic)}</span>
                         </div>
                       </li>
                     ))}

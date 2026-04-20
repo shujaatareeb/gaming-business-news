@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { type Topic, type Tweet } from "@/lib/mock-data";
 import { categoryColors } from "@/lib/constants";
-import { readTime } from "@/lib/utils";
+import { topicReadTime } from "@/lib/utils";
 import { useTranslatedTopics } from "./translated-text";
 import { SectionLabel } from "./section-label";
 
@@ -37,7 +37,7 @@ export function LeadStory({ topic }: { topic: Topic }) {
       <div className="flex items-center gap-2 text-xs text-muted-light">
         <span className="font-medium text-muted">{topic.source}</span>
         <span>&middot;</span>
-        <span>{readTime(topic.body || topic.summary)}</span>
+        <span>{topicReadTime(topic)}</span>
       </div>
     </article>
   );
@@ -70,7 +70,7 @@ export function StoryList({ topics }: { topics: Topic[] }) {
                   <div className="flex items-center gap-2 text-[11px] text-muted-light">
                     <span className="font-medium text-muted">{topic.source}</span>
                     <span>&middot;</span>
-                    <span>{readTime(topic.body || topic.summary)}</span>
+                    <span>{topicReadTime(topic)}</span>
                   </div>
                 </div>
 

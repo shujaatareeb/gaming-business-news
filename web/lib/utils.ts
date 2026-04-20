@@ -7,6 +7,10 @@ export function getTimeAgo(date: Date): string {
   return `${Math.floor(seconds / 86400)}d ago`;
 }
 
+export function topicReadTime(topic: { body?: string; summary: string }): string {
+  return readTime(topic.body || topic.summary);
+}
+
 export function readTime(text: string): string {
   // Generate a deterministic 3-6 min read time based on content hash
   let hash = 0;

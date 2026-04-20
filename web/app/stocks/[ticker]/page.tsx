@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { stocks, topics, tweets } from "@/lib/mock-data";
 import { companyProfiles, getStockStats, getOHLCData, tickerKeywords } from "@/lib/stock-data";
 import { categoryColors, SITE_NAME, SITE_URL } from "@/lib/constants";
-import { readTime } from "@/lib/utils";
+import { topicReadTime } from "@/lib/utils";
 import { StockChart } from "@/app/components/stock-chart";
 import { Header } from "@/app/components/header";
 
@@ -258,7 +258,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
                             {topic.category}
                           </span>
                           <span className="text-[10px] text-muted-light">&middot;</span>
-                          <span className="text-[10px] text-muted">{readTime(topic.summary)}</span>
+                          <span className="text-[10px] text-muted">{topicReadTime(topic)}</span>
                         </div>
                         <h3 className="text-sm font-bold leading-snug line-clamp-2 group-hover:text-accent transition">
                           {topic.title}

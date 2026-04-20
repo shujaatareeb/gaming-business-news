@@ -2,7 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import { LANGUAGES } from "@/lib/i18n";
 
-const client = new OpenAI();
+let _client: OpenAI | null = null;
+function getClient() {
+  if (!_client) _client = new OpenAI();
+  return _client;
+}
 
 // In-memory cache to avoid re-translating the same content
 const cache = new Map<string, string>();
@@ -39,7 +43,7 @@ export async function POST(req: NextRequest) {
     // Batch translate
     const numbered = toTranslate.map((t, i) => `[${i}] ${t.text}`).join("\n");
 
-    const response = await client.chat.completions.create({
+    const response = await getClient().chat.completions.create({
       model: "gpt-4o-mini",
       max_tokens: 4096,
       messages: [
