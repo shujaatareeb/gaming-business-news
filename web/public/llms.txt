@@ -1,0 +1,25 @@
+# GamePulse
+
+> Gaming industry business intelligence. AI-curated coverage of acquisitions, earnings, funding, layoffs, and market shifts across the gaming industry. Updated three times daily.
+
+## Key Pages
+
+- Homepage: /
+- Story pages: /story/[id] — individual news articles with analysis
+- Stock pages: /stocks/[ticker] — gaming company stock data, charts, and related news
+- About: /about — editorial mission and methodology
+- Dashboard: /dashboard — internal analytics (not for indexing)
+
+## Content Types
+
+- **News Articles**: Business-focused gaming industry stories sourced from GamesIndustry.biz, Game Developer, Kotaku, and other outlets. Each article includes a headline, summary, source attribution, publication date, and editorial analysis.
+- **Stock Data**: Real-time pricing, key statistics, company profiles, and interactive charts for 12 publicly traded gaming companies including Nintendo, Sony, Microsoft, EA, Take-Two, Roblox, Unity, and others.
+- **Market Analysis**: AI-generated commentary on gaming business trends posted to X/Twitter.
+
+## Topics Covered
+
+Gaming M&A, earnings reports, studio layoffs, funding rounds, hardware launches, subscription services, antitrust regulation, AI in game development, platform economics, live service strategy.
+
+## Publisher
+
+GamePulse is an automated news intelligence platform. Stories are sourced from established gaming industry publications and analyzed using AI. All original reporting belongs to the cited source publications.
