@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { topics, tweets, stocks } from "@/lib/mock-data";
 import { categoryColors } from "@/lib/constants";
 import { buildTweetMap } from "@/lib/utils";
+import { useLang } from "./lang-provider";
 
 const tweetMap = buildTweetMap(tweets);
 
@@ -19,6 +20,7 @@ export function SearchModal() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+  const { t } = useLang();
 
   // Cmd+K listener
   useEffect(() => {
@@ -98,7 +100,7 @@ export function SearchModal() {
         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
-        <span>Search</span>
+        <span>{t("search")}</span>
         <kbd className="hidden md:inline text-[10px] text-muted-light bg-surface-alt border border-border px-1.5 py-0.5 rounded font-mono">
           {"\u2318"}K
         </kbd>
@@ -122,7 +124,7 @@ export function SearchModal() {
             <input
               ref={inputRef}
               type="text"
-              placeholder="Search stories, stocks..."
+              placeholder={t("searchPlaceholder")}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
@@ -137,12 +139,12 @@ export function SearchModal() {
           <div className="max-h-80 overflow-y-auto">
             {!query.trim() && (
               <div className="px-5 pt-3 pb-1">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-muted">Trending</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-muted">{t("trending")}</span>
               </div>
             )}
             {query.trim() && results.length === 0 && (
               <div className="px-5 py-8 text-center text-sm text-muted">
-                No results for &ldquo;{query}&rdquo;
+                {t("noResults")} &ldquo;{query}&rdquo;
               </div>
             )}
             {displayItems.map((item, i) => (
@@ -187,13 +189,13 @@ export function SearchModal() {
           {/* Footer */}
           <div className="px-5 py-2.5 border-t border-border flex items-center gap-4 text-[10px] text-muted-light">
             <span className="flex items-center gap-1">
-              <kbd className="border border-border px-1 py-0.5 rounded font-mono">↑↓</kbd> navigate
+              <kbd className="border border-border px-1 py-0.5 rounded font-mono">↑↓</kbd> {t("navigate")}
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="border border-border px-1 py-0.5 rounded font-mono">↵</kbd> open
+              <kbd className="border border-border px-1 py-0.5 rounded font-mono">↵</kbd> {t("open")}
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="border border-border px-1 py-0.5 rounded font-mono">esc</kbd> close
+              <kbd className="border border-border px-1 py-0.5 rounded font-mono">esc</kbd> {t("close")}
             </span>
           </div>
         </div>

@@ -225,27 +225,27 @@ export function StockChart({ ticker, currentPrice, change, allData }: StockChart
       height: 380,
       layout: {
         background: { type: ColorType.Solid, color: "transparent" },
-        textColor: "#a1a1aa",
+        textColor: "#78716c",
         fontFamily: "system-ui, -apple-system, sans-serif",
         fontSize: 11,
       },
       grid: {
-        vertLines: { color: "#27272a", style: LineStyle.Dotted },
-        horzLines: { color: "#27272a", style: LineStyle.Dotted },
+        vertLines: { color: "#f5f5f4", style: LineStyle.Dotted },
+        horzLines: { color: "#f5f5f4", style: LineStyle.Dotted },
       },
       rightPriceScale: {
-        borderColor: "#3f3f46",
+        borderColor: "#e7e5e4",
         scaleMargins: { top: 0.05, bottom: 0.15 },
       },
       timeScale: {
-        borderColor: "#3f3f46",
+        borderColor: "#e7e5e4",
         timeVisible: false,
         fixLeftEdge: true,
         fixRightEdge: true,
       },
       crosshair: {
-        vertLine: { color: "#71717a", width: 1, style: LineStyle.Dashed, labelBackgroundColor: "#18181b" },
-        horzLine: { color: "#71717a", width: 1, style: LineStyle.Dashed, labelBackgroundColor: "#18181b" },
+        vertLine: { color: "#a8a29e", width: 1, style: LineStyle.Dashed, labelBackgroundColor: "#1c1917" },
+        horzLine: { color: "#a8a29e", width: 1, style: LineStyle.Dashed, labelBackgroundColor: "#1c1917" },
       },
     });
 
@@ -308,9 +308,9 @@ export function StockChart({ ticker, currentPrice, change, allData }: StockChart
       const bb = calcBollinger(data, 20, 2);
       const sM = chart.addSeries(LineSeries, { color: "#6366f1", lineWidth: 1, priceLineVisible: false, lastValueVisible: false });
       sM.setData(bb.middle);
-      const sU = chart.addSeries(LineSeries, { color: "#71717a", lineWidth: 1, lineStyle: LineStyle.Dashed, priceLineVisible: false, lastValueVisible: false });
+      const sU = chart.addSeries(LineSeries, { color: "#a8a29e", lineWidth: 1, lineStyle: LineStyle.Dashed, priceLineVisible: false, lastValueVisible: false });
       sU.setData(bb.upper);
-      const sL = chart.addSeries(LineSeries, { color: "#71717a", lineWidth: 1, lineStyle: LineStyle.Dashed, priceLineVisible: false, lastValueVisible: false });
+      const sL = chart.addSeries(LineSeries, { color: "#a8a29e", lineWidth: 1, lineStyle: LineStyle.Dashed, priceLineVisible: false, lastValueVisible: false });
       sL.setData(bb.lower);
       extraSeriesRef.current.push(sM, sU, sL);
     }

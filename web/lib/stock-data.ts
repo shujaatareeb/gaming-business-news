@@ -25,6 +25,7 @@ export const companyProfiles: Record<string, {
   ceo: string;
   website: string;
   keyFranchises: string[];
+  logo: string;
 }> = {
   NTDOY: {
     description: "Nintendo Co., Ltd. develops, manufactures, and sells entertainment products. The company offers video game consoles, handheld devices, software, and accessories. Nintendo is known for iconic franchises and a hardware-driven business model that prioritizes first-party content.",
@@ -35,6 +36,7 @@ export const companyProfiles: Record<string, {
     ceo: "Shuntaro Furukawa",
     website: "nintendo.com",
     keyFranchises: ["Mario", "Zelda", "Pokemon", "Animal Crossing", "Splatoon"],
+    logo: "https://logo.clearbit.com/nintendo.com",
   },
   SONY: {
     description: "Sony Group Corporation operates through its Game & Network Services segment, which includes PlayStation consoles, game software, and network services. Sony Interactive Entertainment is the world's largest console gaming company by revenue.",
@@ -45,6 +47,7 @@ export const companyProfiles: Record<string, {
     ceo: "Kenichiro Yoshida",
     website: "sony.com",
     keyFranchises: ["PlayStation", "God of War", "Spider-Man", "The Last of Us", "Gran Turismo"],
+    logo: "https://logo.clearbit.com/sony.com",
   },
   MSFT: {
     description: "Microsoft Corporation's gaming division operates Xbox consoles, Game Pass subscription service, and a portfolio of first-party studios including Bethesda and Activision Blizzard. Xbox Game Pass is central to Microsoft's gaming strategy.",
@@ -55,6 +58,7 @@ export const companyProfiles: Record<string, {
     ceo: "Satya Nadella",
     website: "xbox.com",
     keyFranchises: ["Halo", "Forza", "Call of Duty", "Elder Scrolls", "Minecraft"],
+    logo: "https://logo.clearbit.com/xbox.com",
   },
   EA: {
     description: "Electronic Arts Inc. develops, publishes, and distributes games across console, PC, and mobile. EA is known for annual sports franchises and live service games. The company has shifted toward a recurring revenue model driven by microtransactions and subscriptions.",
@@ -65,6 +69,7 @@ export const companyProfiles: Record<string, {
     ceo: "Andrew Wilson",
     website: "ea.com",
     keyFranchises: ["EA Sports FC", "Madden NFL", "Apex Legends", "The Sims", "Battlefield"],
+    logo: "https://logo.clearbit.com/ea.com",
   },
   TTWO: {
     description: "Take-Two Interactive Software, Inc. develops, publishes, and markets interactive entertainment. Through its Rockstar Games and 2K labels, the company produces some of the highest-grossing entertainment products ever made. GTA V has generated over $8 billion in lifetime revenue.",
@@ -75,6 +80,7 @@ export const companyProfiles: Record<string, {
     ceo: "Strauss Zelnick",
     website: "take2games.com",
     keyFranchises: ["Grand Theft Auto", "Red Dead Redemption", "NBA 2K", "Civilization", "BioShock"],
+    logo: "https://logo.clearbit.com/take2games.com",
   },
   ATVI: {
     description: "Activision Blizzard, Inc. develops, publishes, and distributes interactive entertainment worldwide. Now a subsidiary of Microsoft following the $68.7B acquisition. The company operates Activision Publishing, Blizzard Entertainment, and King Digital.",
@@ -85,6 +91,7 @@ export const companyProfiles: Record<string, {
     ceo: "Bobby Kotick (former)",
     website: "activisionblizzard.com",
     keyFranchises: ["Call of Duty", "World of Warcraft", "Overwatch", "Diablo", "Candy Crush"],
+    logo: "https://logo.clearbit.com/activisionblizzard.com",
   },
   RBLX: {
     description: "Roblox Corporation operates a global platform that brings people together through shared experiences. The platform hosts millions of user-generated 3D experiences and has become the dominant gaming platform for audiences under 16. Roblox's developer economy paid out over $800M to creators in 2024.",
@@ -95,6 +102,7 @@ export const companyProfiles: Record<string, {
     ceo: "David Baszucki",
     website: "roblox.com",
     keyFranchises: ["Roblox Platform", "Roblox Studio", "Roblox Cloud"],
+    logo: "https://logo.clearbit.com/roblox.com",
   },
   U: {
     description: "Unity Technologies operates a platform for creating and operating real-time 3D content. Unity's game engine powers over 50% of all mobile games and is used across industries including automotive, film, and architecture. The company has faced controversy over pricing changes.",
@@ -105,6 +113,7 @@ export const companyProfiles: Record<string, {
     ceo: "Matthew Bromberg",
     website: "unity.com",
     keyFranchises: ["Unity Engine", "Unity Ads", "Unity Gaming Services"],
+    logo: "https://logo.clearbit.com/unity.com",
   },
   SE: {
     description: "Sea Limited operates Garena, a leading global online games platform. Its Free Fire mobile game is one of the most downloaded games globally. Sea also operates Shopee (e-commerce) and SeaMoney (fintech) across Southeast Asia and Latin America.",
@@ -115,6 +124,7 @@ export const companyProfiles: Record<string, {
     ceo: "Forrest Li",
     website: "sea.com",
     keyFranchises: ["Free Fire", "Garena", "Shopee"],
+    logo: "https://logo.clearbit.com/sea.com",
   },
   NTES: {
     description: "NetEase, Inc. operates online games and related services in China and internationally. NetEase is China's second-largest gaming company and operates popular MMOs and mobile titles. The company also runs a music streaming service and education platform.",
@@ -125,6 +135,7 @@ export const companyProfiles: Record<string, {
     ceo: "William Ding",
     website: "netease.com",
     keyFranchises: ["Fantasy Westward Journey", "Naraka: Bladepoint", "Eggy Party", "Marvel Rivals"],
+    logo: "https://logo.clearbit.com/netease.com",
   },
   UBSFY: {
     description: "Ubisoft Entertainment SA develops, publishes, and distributes video games worldwide. Known for large open-world franchises, Ubisoft has faced recent financial challenges and strategic questions about its future direction. The Guillemot family maintains control through a complex ownership structure.",
@@ -135,6 +146,7 @@ export const companyProfiles: Record<string, {
     ceo: "Yves Guillemot",
     website: "ubisoft.com",
     keyFranchises: ["Assassin's Creed", "Far Cry", "Rainbow Six", "Just Dance", "Prince of Persia"],
+    logo: "https://logo.clearbit.com/ubisoft.com",
   },
   CCOEY: {
     description: "Capcom Co., Ltd. develops, publishes, and distributes video games globally. Capcom has executed one of the most successful turnarounds in gaming, leveraging its deep IP library and the RE Engine to deliver consistent hits. The company's operating margins are among the highest in the industry.",
@@ -145,11 +157,16 @@ export const companyProfiles: Record<string, {
     ceo: "Haruhiro Tsujimoto",
     website: "capcom.com",
     keyFranchises: ["Resident Evil", "Monster Hunter", "Street Fighter", "Devil May Cry", "Mega Man"],
+    logo: "https://logo.clearbit.com/capcom.com",
   },
 };
 
 function tickerSeed(ticker: string): number {
-  return ticker.split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
+  let h = 0;
+  for (const c of ticker) {
+    h = ((h << 5) - h + c.charCodeAt(0)) | 0;
+  }
+  return Math.abs(h);
 }
 
 export function getStockStats(stock: Stock) {
@@ -194,7 +211,17 @@ export function getOHLCData(stock: Stock, days: number = 90): OHLCDataPoint[] {
   const seed = tickerSeed(stock.ticker);
   const data: OHLCDataPoint[] = [];
   const today = new Date();
-  let close = stock.price * (1 - (days * 0.001) + (seed % 10) * 0.005);
+  // Unique starting price offset per ticker
+  const startOffset = ((seed * 7 + 13) % 100) / 1000;
+  let close = stock.price * (1 - (days * 0.0008) + startOffset);
+
+  // Unique oscillation parameters per ticker
+  const freq1 = 0.2 + (seed % 37) * 0.015;
+  const freq2 = 0.3 + (seed % 23) * 0.02;
+  const freq3 = 0.15 + (seed % 41) * 0.012;
+  const phase1 = (seed % 100) * 0.0628;
+  const phase2 = (seed % 73) * 0.086;
+  const phase3 = (seed % 59) * 0.106;
 
   for (let i = days; i >= 0; i--) {
     const date = new Date(today);
@@ -204,20 +231,20 @@ export function getOHLCData(stock: Stock, days: number = 90): OHLCDataPoint[] {
     if (dow === 0 || dow === 6) continue;
 
     const dayIndex = days - i;
-    const p1 = Math.sin(seed * 0.13 + dayIndex * 0.31) * 0.5 + 0.5;
-    const p2 = Math.sin(seed * 0.07 + dayIndex * 0.53) * 0.5 + 0.5;
-    const p3 = Math.sin(seed * 0.19 + dayIndex * 0.17) * 0.5 + 0.5;
+    const p1 = Math.sin(phase1 + dayIndex * freq1) * 0.5 + 0.5;
+    const p2 = Math.sin(phase2 + dayIndex * freq2) * 0.5 + 0.5;
+    const p3 = Math.sin(phase3 + dayIndex * freq3) * 0.5 + 0.5;
 
     const trend = (stock.price - close) / (i + 10);
-    const volatility = stock.price * 0.012;
+    const volatility = stock.price * (0.008 + (seed % 50) * 0.0002);
     const open = close;
     close = open + trend + (p1 - 0.48) * volatility;
-    close = Math.max(close, stock.price * 0.5);
+    close = Math.max(close, stock.price * 0.4);
 
     const spread = Math.abs(close - open);
     const high = Math.max(open, close) + spread * p2 * 1.5 + stock.price * 0.002;
     const low = Math.min(open, close) - spread * p3 * 1.5 - stock.price * 0.002;
-    const volume = Math.round((p1 * 15 + 3) * 1_000_000);
+    const volume = Math.round((p1 * 15 + 3 + (seed % 10)) * 1_000_000);
 
     const yyyy = date.getFullYear();
     const mm = String(date.getMonth() + 1).padStart(2, "0");

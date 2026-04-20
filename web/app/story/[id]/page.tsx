@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { topics, tweets } from "@/lib/mock-data";
 import { categoryColors, SITE_NAME, SITE_URL } from "@/lib/constants";
 import { NewsArticleSchema, BreadcrumbSchema } from "@/app/components/json-ld";
+import { ArticleBody, TranslatedTitle } from "@/app/components/article-body";
 
 export function generateStaticParams() {
   return topics.map((t) => ({ id: t.id }));
@@ -89,11 +90,9 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
               {topic.category}
             </span>
 
-            <h1 className="font-editorial text-3xl sm:text-4xl font-bold leading-tight mt-2 mb-5">
-              {topic.title}
-            </h1>
+            <TranslatedTitle text={topic.title} />
 
-            <div className="flex items-center gap-3 text-xs text-muted-light mb-4">
+            <div className="flex items-center gap-3 text-xs text-muted-light mb-6">
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded-full bg-foreground flex items-center justify-center text-[10px] font-bold text-surface">
                   GP
@@ -112,33 +111,10 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
                   day: "numeric",
                 })}
               </time>
-              <span>&middot;</span>
-              <span>Source: <a href={topic.link} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">{topic.source}</a></span>
             </div>
-            <div className="border-b border-border mb-8 pb-6" />
+            <div className="border-b border-border mb-8" />
 
-            {/* Article body */}
-            <div className="prose max-w-none">
-              <p className="text-[17px] leading-[1.8] text-foreground/90 font-medium mb-6">
-                {topic.summary}
-              </p>
-              <p className="text-[15px] leading-[1.8] text-muted mb-5">
-                The implications of this development extend across the broader gaming ecosystem,
-                touching on competitive dynamics, investor sentiment, and the strategic positioning
-                of key industry players. Analysts have noted that moves like this reflect a maturing
-                industry increasingly driven by consolidation and platform economics.
-              </p>
-              <p className="text-[15px] leading-[1.8] text-muted mb-5">
-                Industry observers expect further developments in the coming quarters as market
-                participants respond to shifting competitive pressures and evolving consumer
-                preferences. The full financial impact remains to be seen as the sector navigates
-                a period of significant transition.
-              </p>
-              <p className="text-xs text-muted-light italic mt-8 pt-6 border-t border-border">
-                This story was sourced from {topic.source} and analyzed by our AI pipeline.
-                Original reporting belongs to the source publication.
-              </p>
-            </div>
+            <ArticleBody body={topic.body} />
 
             {/* Tweet card */}
             {tweet && (

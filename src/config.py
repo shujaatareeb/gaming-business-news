@@ -15,12 +15,25 @@ CLAUDE_MODEL = "claude-sonnet-4-20250514"
 
 # RSS feeds for gaming business news
 RSS_FEEDS = [
+    # Core gaming business
     "https://www.gamesindustry.biz/feed",
-    "https://www.videogameschronicle.com/feed",
     "https://www.gamedeveloper.com/rss.xml",
+    "https://www.videogameschronicle.com/feed",
     "https://kotaku.com/rss",
     "https://www.ign.com/articles?feed=ign-all",
     "https://mobilegamer.biz/feed/",
+    # Esports
+    "https://esportsinsider.com/feed",
+    "https://dotesports.com/feed",
+    "https://www.dexerto.com/feed",
+    # Tech / business
+    "https://www.theverge.com/games/rss/index.xml",
+    "https://www.reuters.com/technology/rss",
+    "https://feeds.bloomberg.com/technology/news.rss",
+    # Market intelligence
+    "https://newzoo.com/feed",
+    "https://nikopartners.com/feed",
+    "https://sensortower.com/blog/feed",
 ]
 
 # Keywords to filter for business-relevant stories
@@ -31,6 +44,9 @@ BUSINESS_KEYWORDS = [
     "expansion", "shutdown", "billion", "million", "ceo", "executive",
     "stock", "shares", "quarterly", "annual", "growth", "decline",
     "regulation", "antitrust", "subscription", "gamepass", "live service",
+    "esport", "tournament", "league", "competitive", "sponsor",
+    "streaming", "broadcast", "prize", "franchise", "mobile",
+    "free-to-play", "indie", "console", "hardware", "platform",
 ]
 
 # How many hours back to look for news

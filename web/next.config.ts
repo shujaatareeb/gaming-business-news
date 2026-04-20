@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "picsum.photos" },
@@ -9,6 +10,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "kotaku.com" },
       { protocol: "https", hostname: "mobilegamer.biz" },
       { protocol: "https", hostname: "esportsinsider.com" },
+      { protocol: "https", hostname: "www.videogameschronicle.com" },
+      { protocol: "https", hostname: "logo.clearbit.com" },
     ],
   },
 };

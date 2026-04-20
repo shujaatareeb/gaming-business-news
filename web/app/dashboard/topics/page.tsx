@@ -2,7 +2,7 @@ import { topics } from "@/lib/mock-data";
 import { categoryColors } from "@/lib/constants";
 
 const statusStyles: Record<string, { dot: string; text: string }> = {
-  discovered: { dot: "bg-blue-400", text: "text-blue-400" },
+  discovered: { dot: "bg-blue-500", text: "text-blue-600" },
   researched: { dot: "bg-status-partial", text: "text-status-partial" },
   tweeted: { dot: "bg-status-success", text: "text-status-success" },
   skipped: { dot: "bg-muted-light", text: "text-muted" },
