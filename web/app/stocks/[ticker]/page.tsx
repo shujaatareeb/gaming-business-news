@@ -84,11 +84,11 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
             <div>
               <div className="flex items-center gap-3 mb-1">
                 {profile?.logo && (
-                  <Image
-                    src={profile.logo}
+                  <img
+                    src={`${profile.logo}&sz=64`}
                     alt={`${stock.name} logo`}
-                    width={40}
-                    height={40}
+                    width={36}
+                    height={36}
                     className="rounded-lg border border-border"
                   />
                 )}
@@ -246,26 +246,25 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
                   </h2>
                   <div className="flex-1 h-px bg-border" />
                 </div>
-                <div className="space-y-3">
+                <div className="divide-y divide-border">
                   {relatedTopics.map((topic) => (
-                    <Link key={topic.id} href={`/story/${topic.id}`} className="flex gap-4 border border-border rounded-xl bg-surface p-4 hover:bg-surface-alt transition group">
-                      <div className="relative w-28 h-20 rounded-lg overflow-hidden bg-surface-alt shrink-0">
-                        <Image src={topic.image} alt={topic.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" sizes="112px" />
-                      </div>
+                    <article key={topic.id} className="flex gap-5 py-4 first:pt-0">
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className={`text-[10px] font-bold uppercase tracking-wider ${categoryColors[topic.category] || "text-accent"}`}>
-                            {topic.category}
-                          </span>
-                          <span className="text-[10px] text-muted-light">&middot;</span>
-                          <span className="text-[10px] text-muted">{topicReadTime(topic)}</span>
-                        </div>
-                        <h3 className="text-sm font-bold leading-snug line-clamp-2 group-hover:text-accent transition">
-                          {topic.title}
+                        <span className={`text-[10px] font-bold uppercase tracking-wider ${categoryColors[topic.category] || "text-accent"}`}>
+                          {topic.category}
+                        </span>
+                        <h3 className="text-[15px] font-bold leading-snug mt-0.5 mb-1">
+                          <Link href={`/story/${topic.id}`} className="hover:text-accent transition-colors">
+                            {topic.title}
+                          </Link>
                         </h3>
-                        <p className="text-xs text-muted mt-1 line-clamp-1">{topic.source}</p>
+                        <p className="text-sm text-muted line-clamp-2 mb-1">{topic.summary}</p>
+                        <div className="text-[11px] text-muted-light">{topicReadTime(topic)}</div>
                       </div>
-                    </Link>
+                      <Link href={`/story/${topic.id}`} className="hidden sm:block relative w-[160px] h-[100px] bg-surface-alt shrink-0 overflow-hidden">
+                        <Image src={topic.image} alt={topic.title} fill className="object-cover hover:scale-105 transition-transform duration-500" sizes="160px" />
+                      </Link>
+                    </article>
                   ))}
                 </div>
               </div>

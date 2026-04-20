@@ -36,7 +36,7 @@ export const companyProfiles: Record<string, {
     ceo: "Shuntaro Furukawa",
     website: "nintendo.com",
     keyFranchises: ["Mario", "Zelda", "Pokemon", "Animal Crossing", "Splatoon"],
-    logo: "https://logo.clearbit.com/nintendo.com",
+    logo: "https://www.google.com/s2/favicons?domain=nintendo.com",
   },
   SONY: {
     description: "Sony Group Corporation operates through its Game & Network Services segment, which includes PlayStation consoles, game software, and network services. Sony Interactive Entertainment is the world's largest console gaming company by revenue.",
@@ -47,7 +47,7 @@ export const companyProfiles: Record<string, {
     ceo: "Kenichiro Yoshida",
     website: "sony.com",
     keyFranchises: ["PlayStation", "God of War", "Spider-Man", "The Last of Us", "Gran Turismo"],
-    logo: "https://logo.clearbit.com/sony.com",
+    logo: "https://www.google.com/s2/favicons?domain=sony.com",
   },
   MSFT: {
     description: "Microsoft Corporation's gaming division operates Xbox consoles, Game Pass subscription service, and a portfolio of first-party studios including Bethesda and Activision Blizzard. Xbox Game Pass is central to Microsoft's gaming strategy.",
@@ -58,7 +58,7 @@ export const companyProfiles: Record<string, {
     ceo: "Satya Nadella",
     website: "xbox.com",
     keyFranchises: ["Halo", "Forza", "Call of Duty", "Elder Scrolls", "Minecraft"],
-    logo: "https://logo.clearbit.com/xbox.com",
+    logo: "https://www.google.com/s2/favicons?domain=xbox.com",
   },
   EA: {
     description: "Electronic Arts Inc. develops, publishes, and distributes games across console, PC, and mobile. EA is known for annual sports franchises and live service games. The company has shifted toward a recurring revenue model driven by microtransactions and subscriptions.",
@@ -69,7 +69,7 @@ export const companyProfiles: Record<string, {
     ceo: "Andrew Wilson",
     website: "ea.com",
     keyFranchises: ["EA Sports FC", "Madden NFL", "Apex Legends", "The Sims", "Battlefield"],
-    logo: "https://logo.clearbit.com/ea.com",
+    logo: "https://www.google.com/s2/favicons?domain=ea.com",
   },
   TTWO: {
     description: "Take-Two Interactive Software, Inc. develops, publishes, and markets interactive entertainment. Through its Rockstar Games and 2K labels, the company produces some of the highest-grossing entertainment products ever made. GTA V has generated over $8 billion in lifetime revenue.",
@@ -80,7 +80,7 @@ export const companyProfiles: Record<string, {
     ceo: "Strauss Zelnick",
     website: "take2games.com",
     keyFranchises: ["Grand Theft Auto", "Red Dead Redemption", "NBA 2K", "Civilization", "BioShock"],
-    logo: "https://logo.clearbit.com/take2games.com",
+    logo: "https://www.google.com/s2/favicons?domain=take2games.com",
   },
   ATVI: {
     description: "Activision Blizzard, Inc. develops, publishes, and distributes interactive entertainment worldwide. Now a subsidiary of Microsoft following the $68.7B acquisition. The company operates Activision Publishing, Blizzard Entertainment, and King Digital.",
@@ -91,7 +91,7 @@ export const companyProfiles: Record<string, {
     ceo: "Bobby Kotick (former)",
     website: "activisionblizzard.com",
     keyFranchises: ["Call of Duty", "World of Warcraft", "Overwatch", "Diablo", "Candy Crush"],
-    logo: "https://logo.clearbit.com/activisionblizzard.com",
+    logo: "https://www.google.com/s2/favicons?domain=activisionblizzard.com",
   },
   RBLX: {
     description: "Roblox Corporation operates a global platform that brings people together through shared experiences. The platform hosts millions of user-generated 3D experiences and has become the dominant gaming platform for audiences under 16. Roblox's developer economy paid out over $800M to creators in 2024.",
@@ -102,7 +102,7 @@ export const companyProfiles: Record<string, {
     ceo: "David Baszucki",
     website: "roblox.com",
     keyFranchises: ["Roblox Platform", "Roblox Studio", "Roblox Cloud"],
-    logo: "https://logo.clearbit.com/roblox.com",
+    logo: "https://www.google.com/s2/favicons?domain=roblox.com",
   },
   U: {
     description: "Unity Technologies operates a platform for creating and operating real-time 3D content. Unity's game engine powers over 50% of all mobile games and is used across industries including automotive, film, and architecture. The company has faced controversy over pricing changes.",
@@ -113,7 +113,7 @@ export const companyProfiles: Record<string, {
     ceo: "Matthew Bromberg",
     website: "unity.com",
     keyFranchises: ["Unity Engine", "Unity Ads", "Unity Gaming Services"],
-    logo: "https://logo.clearbit.com/unity.com",
+    logo: "https://www.google.com/s2/favicons?domain=unity.com",
   },
   SE: {
     description: "Sea Limited operates Garena, a leading global online games platform. Its Free Fire mobile game is one of the most downloaded games globally. Sea also operates Shopee (e-commerce) and SeaMoney (fintech) across Southeast Asia and Latin America.",
@@ -124,7 +124,7 @@ export const companyProfiles: Record<string, {
     ceo: "Forrest Li",
     website: "sea.com",
     keyFranchises: ["Free Fire", "Garena", "Shopee"],
-    logo: "https://logo.clearbit.com/sea.com",
+    logo: "https://www.google.com/s2/favicons?domain=sea.com",
   },
   NTES: {
     description: "NetEase, Inc. operates online games and related services in China and internationally. NetEase is China's second-largest gaming company and operates popular MMOs and mobile titles. The company also runs a music streaming service and education platform.",
@@ -135,7 +135,7 @@ export const companyProfiles: Record<string, {
     ceo: "William Ding",
     website: "netease.com",
     keyFranchises: ["Fantasy Westward Journey", "Naraka: Bladepoint", "Eggy Party", "Marvel Rivals"],
-    logo: "https://logo.clearbit.com/netease.com",
+    logo: "https://www.google.com/s2/favicons?domain=netease.com",
   },
   UBSFY: {
     description: "Ubisoft Entertainment SA develops, publishes, and distributes video games worldwide. Known for large open-world franchises, Ubisoft has faced recent financial challenges and strategic questions about its future direction. The Guillemot family maintains control through a complex ownership structure.",
@@ -146,7 +146,7 @@ export const companyProfiles: Record<string, {
     ceo: "Yves Guillemot",
     website: "ubisoft.com",
     keyFranchises: ["Assassin's Creed", "Far Cry", "Rainbow Six", "Just Dance", "Prince of Persia"],
-    logo: "https://logo.clearbit.com/ubisoft.com",
+    logo: "https://www.google.com/s2/favicons?domain=ubisoft.com",
   },
   CCOEY: {
     description: "Capcom Co., Ltd. develops, publishes, and distributes video games globally. Capcom has executed one of the most successful turnarounds in gaming, leveraging its deep IP library and the RE Engine to deliver consistent hits. The company's operating margins are among the highest in the industry.",
@@ -157,7 +157,7 @@ export const companyProfiles: Record<string, {
     ceo: "Haruhiro Tsujimoto",
     website: "capcom.com",
     keyFranchises: ["Resident Evil", "Monster Hunter", "Street Fighter", "Devil May Cry", "Mega Man"],
-    logo: "https://logo.clearbit.com/capcom.com",
+    logo: "https://www.google.com/s2/favicons?domain=capcom.com",
   },
 };
 

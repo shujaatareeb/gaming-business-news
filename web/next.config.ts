@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "mobilegamer.biz" },
       { protocol: "https", hostname: "esportsinsider.com" },
       { protocol: "https", hostname: "www.videogameschronicle.com" },
-      { protocol: "https", hostname: "logo.clearbit.com" },
+      { protocol: "https", hostname: "www.google.com" },
     ],
   },
 };
